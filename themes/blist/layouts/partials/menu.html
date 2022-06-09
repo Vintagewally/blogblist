@@ -25,7 +25,7 @@
           {{ $page_url:= $current.RelPermalink | relLangURL }}
       
           
-          <li class="nav-item flex items-center relative {{ if eq $menu_item_url $page_url }}activeX{{ end }}">
+          <li class="nav-item flex items-center relative">
           <a class='nav-link' href="{{ .URL | relLangURL }}"><span>{{ .Name }}</span></a>
 
           <!-- how to have active childrens? -->
@@ -35,8 +35,8 @@
 
             <ul class="sub-menu text-right text-gray-900 transition-colors dark:text-gray-200 dark:bg-gray-800">
                 {{ range .Children }}
-                <li class="nav-item flex items-center {{  if eq $menu_item_url $page_url  }}activeY{{ end }}">
-                <a href="{{ .URL | relLangURL }}" class="px-3 py-2"><span>{{ .Name }}</span></a></li>
+                <li class="nav-item flex items-center">
+                <a href="{{ .URL | relLangURL }}" class="px-3 py-2 nav-link"><span>{{ .Name }}</span></a></li>
                 
                  {{ end }}
             </ul>
@@ -57,8 +57,8 @@
 
   
             
-            .activeX {color:#D73D85}
-            .activeY {color:#3dd75e}
+            .nav-item a:is(:link, :active, :visited).activeX {color:#D73D85}
+            /*.activeY {color:#3dd75e}*/
             
             .sub-menu {
               opacity:0;
@@ -87,7 +87,7 @@
                               }
 
 
-              .sub-menu li a:hover {text-decoration: underline;}                
+              /*.sub-menu li a:hover {text-decoration: underline;} */               
 
               }
 
