@@ -19,7 +19,7 @@ theme = "blist"
 # sectionPagesMenu = "main"
 
 DefaultContentLanguage = "en"
-DefaultContentLanguageInSubdir = true
+DefaultContentLanguageInSubdir = false
 [languages]
   [languages.en]
     contentDir = "content/en" #English
