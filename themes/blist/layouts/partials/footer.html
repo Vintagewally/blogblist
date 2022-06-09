@@ -302,12 +302,16 @@ const activePage = window.location.pathname;
 const navLinks = document.querySelectorAll('.main-menu a');
 
 if ( activePage != '/' ){     // check if on the homepage  -- more difficult on the /de/ version
-  
+
 navLinks.forEach(link  => {
 /*   if (index > 0) return;                         // ignore the first*/ 
   if(link.href.includes(`${activePage}`)){
     link.classList.add('activeX');
-  };
+  }else{
+    if(link.href.includes(`/de`)){
+      // do nothing
+    }
+  }
 });
 
 }
