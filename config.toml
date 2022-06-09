@@ -18,53 +18,44 @@ theme = "blist"
 
 # sectionPagesMenu = "main"
 
-DefaultContentLanguage = "en"
-DefaultContentLanguageInSubdir = true
-[languages]
-  [languages.en]
-    contentDir = "content/en" #English
-    weight = 1
-    languageName = "English"
-    [languages.en.params]
-      introTitle = "Hey! I'm Katheryn Fox"
-      introSubtitle = "26 y/o junior developer who enjoys social card games, blogging and painting"
-      introPhoto = "/picture.jpg"
-      logo = "/blist-logo.png"
-    [[languages.en.menu.main]]
+
+
+
+    [[menu.main]]
         name = "Blog"
         url = "blog"
         weight = 1
 
-    [[languages.en.menu.main]]
+    [[menu.main]]
         name = "About"
         url = "about"
         weight = 2
 
-    [[languages.en.menu.main]]
+    [[menu.main]]
         name = "Contact"
         url = "contact"
         weight = 3        
 
-    [[languages.en.menu.main]]
+    [[menu.main]]
         name = "Shop"
         url = "shop"                    # alternativa   /shop/indexshop.html
         weight = 4
         identifier = "menu.shop"
         category = ""
 
-    [[languages.en.menu.main]]
+    [[menu.main]]
           name = "Option1"
           url = "shop/option1"
           weight = 1 
           parent = "menu.shop"
 
-    [[languages.en.menu.main]]
+    [[menu.main]]
           name = "Option2"
           url = "shop/option2"
           weight = 2 
           parent = "menu.shop"
 
-    [[languages.en.menu.main]]
+    [[menu.main]]
           name = "Option3"
           url = "shop/option3"
           weight = 3 
@@ -73,47 +64,7 @@ DefaultContentLanguageInSubdir = true
 
 
                      
-   # [[languages.en.menu.main]]
-    #    name = "Tags"
-     #   url = "tags"
-      #  weight = 5
-
-
-
-
-
-  [languages.de]
-    contentDir = "content/de" # Deutsch
-    weight = 2
-    languageName = "Deutsch"
-    title = "BlistImproved"
-    description = "Modernes Blog-Theme für Ihre Hugo-Site."
-    [languages.de.params]
-      introTitle = "Hallo, ich bin Katheryn Fox"
-      introSubtitle = "26-jährige Junior-Entwicklerin, die Spaß an sozialen Kartenspielen, Bloggen und Malen hat"
-      introPhoto = "/picture.jpg"
-      logo = "/blist-logo-de.png"       #Brand Logo
-    [[languages.de.menu.main]]
-        name = "Blog"
-        url = "blog"
-        weight = 1
-
-    [[languages.de.menu.main]]
-        name = "Über mich"
-        url = "about"
-        weight = 2
-
-    [[languages.de.menu.main]]
-        name = "Tags"
-        url = "tags"
-        weight = 3
-
- #  To run a 3th language
- #  [languages.dy]
-  #   contentDir = "content/dy" #Example language
-  #   weight = 3
-  #   languageName = "Test Language"
-
+ 
 
 
 
