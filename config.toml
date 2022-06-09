@@ -20,70 +20,15 @@ theme = "blist"
 
 
 
-    [.params]
+    [Site.params]
       introTitle = "Hey! I'm Katheryn Fox"
       introSubtitle = "26 y/o junior developer who enjoys social card games, blogging and painting"
       introPhoto = "/picture.jpg"
-      logo = "/blist-logo.png"
-    [[.menu.main]]
-        name = "Blog"
-        url = "blog"
-        weight = 1
-
-    [[.menu.main]]
-        name = "About"
-        url = "about"
-        weight = 2
-
-    [[.menu.main]]
-        name = "Contact"
-        url = "contact"
-        weight = 3        
-
-    [[.menu.main]]
-        name = "Shop"
-        url = "shop"                    # alternativa   /shop/indexshop.html
-        weight = 4
-        identifier = "menu.shop"
-        category = ""
-
-    [[.menu.main]]
-          name = "Option1"
-          url = "shop/option1"
-          weight = 1 
-          parent = "menu.shop"
-
-    [[.menu.main]]
-          name = "Option2"
-          url = "shop/option2"
-          weight = 2 
-          parent = "menu.shop"
-
-    [[menu.main]]
-          name = "Option3"
-          url = "shop/option3"
-          weight = 3 
-          parent = "menu.shop"
-
-
-
-                     
-   # [[.menu.main]]
-    #    name = "Tags"
-     #   url = "tags"
-      #  weight = 5
 
 
 
 
 
-
-
- #  To run a 3th language
- #  [languages.dy]
-  #   contentDir = "content/dy" #Example language
-  #   weight = 3
-  #   languageName = "Test Language"
 
 
 
