@@ -186,7 +186,7 @@ DefaultContentLanguageInSubdir = true
 googleAnalytics = "" #UA-xxxxxxx google Analytics
 
 
-disableLanguages = ['de', 'en'] 
+disableLanguages = 'de'
 
 # disableLanguages = ['fr', 'ja'] This can be useful when working on a new translation.
 
