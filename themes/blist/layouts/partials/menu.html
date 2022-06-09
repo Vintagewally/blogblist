@@ -23,13 +23,13 @@
 
 
           
-          <li class="nav-item flex items-center {{ if $currentPage.HasMenuCurrent "main" . }}activeX{{ end }}">
+          <li class="nav-item flex items-center relative {{ if $currentPage.HasMenuCurrent "main" . }}activeX{{ end }}">
           <a class='nav-link' href="{{ .URL | relLangURL }}"><span>{{ .Name }}</span></a>
 
           
           
             {{ if .HasChildren }}        
-          <span class="drop-icon" for="{{ .Name }}">▾</span>
+          <span class="drop-icon hrefhmeno" for="{{ .Name }}">▾</span>
 
             <ul class="sub-menu text-right text-gray-900 transition-colors dark:text-gray-200 dark:bg-gray-800">
                 {{ range .Children }}
@@ -53,7 +53,6 @@
 
           <style>
 
-  
   
             
             .activeX {color:red!important}
@@ -90,18 +89,28 @@
 
               }
 
-              .drop-icon {transform:translateX(-30px)}
+
+    .drop-icon {
+    /* transform: translateY(-4px); */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    padding-top:2px;
+    padding-left: 48px;
+    z-index:67;
+    cursor: default;
+}
 
             @media (max-width: 768px) {
               
-             /* .drop-icon {display: none;} */
 
-              .sub-menu {
-              max-height:0;
-              position:relative;
-              transform: translate(0, 0);
-              background:transparent;
-              padding: 0;
+            .sub-menu {
+            max-height:0;
+            position:relative;
+            transform: translate(0, 0);
+            background:transparent;
+            padding: 0;
             }
 
             .sub-menu li:nth-child(1) {
@@ -116,9 +125,8 @@
             body > header > div > div > li:nth-child(4) {display:block; }
             body > header > div > div > li:nth-child(4) > a {pointer-events: none}
             
-            .drop-icon {padding:5px;}
 
-              }
+            }
               
             
             </style>
@@ -141,7 +149,7 @@
             <path d="M11.5 3a17 17 0 0 0 0 18" />
             <path d="M12.5 3a17 17 0 0 1 0 18" />
           </svg>
-          <a>{{ i18n "languageSwitcherLabel" }}</a>
+          <a>{{ i18n "languageSwitcherLabel" }} </a>
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
             stroke-linejoin="round">
@@ -159,7 +167,7 @@
         </div>
       </li>
       {{ else }}
-      <li class="flex items-center sprachelan">
+      <li class="flex items-center  relative">
         {{ range .Site.Languages }}
         {{ if not (eq .Lang $.Site.Language.Lang) }}
         <svg xmlns="http://www.w3.org/2000/svg" class="sprache" class="mr-2" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5"
@@ -171,7 +179,7 @@
           <path d="M11.5 3a17 17 0 0 0 0 18" />
           <path d="M12.5 3a17 17 0 0 1 0 18" />
         </svg>
-        <a href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
+        <a class="nav-link" href="/{{ .Lang }}" lang="{{ .Lang }}">{{ default .Lang .LanguageName }}</a>
         {{ end }}
         {{ end }}
       </li>
@@ -179,7 +187,7 @@
       {{ end }}
   
       {{ if .Site.Params.enableSearch }}
-      <li class="flex items-center navicon">
+      <li class="flex items-center navicon relative ">
         <span class="open-search inline-block cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -192,7 +200,7 @@
       {{ end }}
   
       {{ if .Site.Params.darkModeToggle }}
-      <li class="flex items-center navicon">
+      <li class="flex items-center navicon relative">
         <span class="toggle-dark-mode inline-block cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -249,7 +257,7 @@
   
   
   .showin {
-    max-height:200em!important;
+    max-height:100em!important;
     visibility:visible;
     opacity:1;
     transform: translateY(0);
@@ -258,9 +266,21 @@
   
   }
   
-  button:focus {
-    outline: none!important;
-  }
+  button,
+textarea,
+input,
+select,
+a, 
+.hamburger2 {
+ -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+ -webkit-tap-highlight-color: transparent;
+ -webkit-user-select: none;
+ -khtml-user-select: none;
+ -moz-user-select: none;
+ -ms-user-select: none;
+  user-select: none;
+
+}
       
   .hamburger2,
   .hamburger2::before,
@@ -345,7 +365,6 @@
           } 
   
   .navicon:hover {transform:scale(1.18)}
-  .sprachelan:hover .sprache {transform:scale(1.18);}
   
   }     
   
@@ -353,11 +372,11 @@
   
   @media (max-width: 768px) {
     .main-menu {flex-direction:column;}
-    .main-menu li:nth-child(1) {padding-top:1.4rem}
+    .main-menu li:nth-child(1) {padding-top:1.3rem}
   
     #logox {padding-left:1rem; }
     .navicon {display: flex !important;}
-   .main-menu li {padding: 5px 0;} 
+   .main-menu li {padding: 5px 0; margin-top:5px;} 
     } 
   
   

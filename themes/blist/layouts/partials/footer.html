@@ -265,32 +265,30 @@
 
 
 <script>
+  //const description = document.querySelector(".description");
+   // description.classList.toggle("wildcard");
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
 const mainmenu = document.querySelector(".main-menu");
 const menuToggle = document.querySelector(".menu-toggle");
 
+const submenumobile = document.querySelector(".sub-menu");
+const shopmenulink = document.querySelector("body > header > div > div > li:nth-child(4)")
+const hrefMeno = document.querySelector("body > header > div > div > li:nth-child(4) > span")
+
+
     menuToggle.addEventListener('click', event => {
     event.preventDefault();
     menuToggle.classList.toggle("open");
     mainmenu.classList.toggle('showin');
-   // _toggleMenuIcon();
-   // menuToggle.classList.toggle('showin');
     
 })
-
-
-  //const description = document.querySelector(".description");
-   // description.classList.toggle("wildcard");
-  const submenumobile = document.querySelector(".sub-menu");
-  const shopmenulink = document.querySelector("body > header > div > div > li:nth-child(4)")
   
-  shopmenulink.addEventListener('click', event => {
+    hrefMeno.addEventListener('click', event => {
     event.preventDefault();
     submenumobile.classList.toggle('showin');
-   // _toggleMenuIcon();
-   // shopmenulink.classList.toggle('showin');
   });
 
 
@@ -314,7 +312,7 @@ const menuToggle = document.querySelector(".menu-toggle");
   }
 
   
-  </script>-->
+  </script>
 
 <script>
 
@@ -331,12 +329,12 @@ const menuToggle = document.querySelector(".menu-toggle");
      // spanA2.cssText = 'color:red!important;background-color:yellow!important'; should override but doesnt work
   }
 
-
-
+document.getElementsByTagName("H1")[0].removeAttribute("class");
+document.getElementById("myAnchor").removeAttribute("href");
 
   
   
-  </script>
+  </script>-->
 
 
 
