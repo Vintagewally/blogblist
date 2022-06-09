@@ -1,0 +1,20 @@
+{{ $quote := .Inner }}
+
+<blockquote class="blockquote">
+  <p>
+    {{ $quote | markdownify }}
+    {{ with (.Get "author") }}
+      <br>
+      <span class="author">&mdash; {{ . }}</span>
+    {{ end }}
+  </p>
+</blockquote>
+
+
+<!--
+
+   shortcode markdown in content blog posts:
+
+# check cupper theme for other shortcodes (see https://cupper-hugo-theme.netlify.app/cupper-shortcodes/)
+
+-->

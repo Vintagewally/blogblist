@@ -188,7 +188,7 @@ aside {
 
   <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
     <ul id="categories">
-      <li>Categories:</li>
+      <li>Categories:</li> 
       {{ range .Params.categories }}
         <li><a href="{{ $.Site.BaseURL | relLangURL }}/categories/{{ . | urlize }}">{{ . }}</a> </li>
       {{ end }}
@@ -220,7 +220,7 @@ aside {
 
 <div class="p-6 containertagbut flex justify-center flex-wrap">  <!-- md:w-1/2  1/2 width from medium screens  -->
 
-{{range $name, $taxonomy := .Site.Taxonomies.tags}} {{ $cnt := .Count }}
+{{range $name, $taxonomy := .Site.Taxonomies.tags }}{{ $cnt := .Count }}
 {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
       
 <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a>
@@ -232,9 +232,44 @@ aside {
 </div>
 
 
+<div class="p-6 containertagbut flex justify-center flex-wrap">  <!-- md:w-1/2  1/2 width from medium screens  -->
+
+  {{ range $.Site.Taxonomies.tags.ByCount }}
+  {{ if gt .Count 0 }}
+
+  <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" >
+    <li style="list-style-type: none;">
+      <a href="/tags/{{ .Name }}" title="All pages with tag {{ .Name }}"> {{ .Name }} <sup>{{ .Count }}</sup></a>
+      <!-- this does not work with permalink  -->
+    </li>
+</span>
+        
+  {{end}}
+  {{end}}
+  
+  </div>
+
+
+
+  <div class="flex flex-col text-center">  <!-- md:w-1/2  1/2 width from medium screens  -->
+    {{ range $.Site.Taxonomies.tags.ByCount }}
+    {{ if gt .Count 0 }}
+  
+  <li style="list-style-type: none;">
+    <a href="/tags/{{ .Name }}"> {{ .Name }} <small>{{ .Count }}</small></a>
+  </li>
+          
+    {{end}}
+    {{end}}
+
+    </div>
+
+  
+
+
 <div class="p-6 containertagbut flex justify-center flex-wrap">
   <span class="py-2 px-4 text-lg">Tags:</span>  <!-- md:w-1/2  1/2 width from medium screens  -->
-  {{range $name, $taxonomy := .Site.Taxonomies.tags}}
+  {{ range $name, $taxonomy := .Site.Taxonomies.tags}}
   {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
   <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a></span>
         
@@ -244,9 +279,10 @@ aside {
   </div>
 
 
+
   <div class="p-6 containertagbut flex justify-center flex-wrap">
     <span class="py-2 px-4 text-lg">Categories:</span>  <!-- md:w-1/2  1/2 width from medium screens  -->
-    {{range $name, $taxonomy := .Site.Taxonomies.categories}}
+    {{range $name, $taxonomy := .Site.Taxonomies.categories}}  <!-- for this to work, u need to have taxonomy category set in the config-->
     {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
     <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a></span>
           

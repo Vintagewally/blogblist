@@ -9,8 +9,10 @@ theme = "blist"
 #PaginatePath = "/"
 #summaryLength = 10
 
-#[taxonomies]
-#category = "categories"
+
+[taxonomies]
+tag = "tags"
+category = "categories"
 
 #[permalinks]
 #posts = ":section/:year/:month/:day/:title/"
@@ -32,50 +34,49 @@ DefaultContentLanguageInSubdir = false    #has to ramain false
       logo = "/blist-logo.png"
     [[languages.en.menu.main]]
         name = "Blog"
-        url = "blog"
+        url = "/blog/"
         weight = 1
 
     [[languages.en.menu.main]]
         name = "About"
-        url = "about"
+        url = "/about/"
         weight = 2
 
     [[languages.en.menu.main]]
         name = "Contact"
-        url = "contact"
+        url = "/contact/"
         weight = 3        
 
     [[languages.en.menu.main]]
         name = "Shop"
-        url = "shop"                    # alternativa   /shop/indexshop.html
+        url = "/shop/"                    # alternativa   /shop/indexshop.html
         weight = 4
         identifier = "menu.shop"
         category = ""
 
     [[languages.en.menu.main]]
           name = "Option1"
-          url = "shop/option1"
+          url = "/shop/option1"
           weight = 1 
           parent = "menu.shop"
 
     [[languages.en.menu.main]]
           name = "Option2"
-          url = "shop/option2"
+          url = "/shop/option2"
           weight = 2 
           parent = "menu.shop"
 
     [[languages.en.menu.main]]
           name = "Option3"
-          url = "shop/option3"
+          url = "/shop/option3"
           weight = 3 
           parent = "menu.shop"
-
 
 
                      
    # [[languages.en.menu.main]]
     #    name = "Tags"
-     #   url = "tags"
+     #   url = "/tags/"
       #  weight = 5
 
 

@@ -18,22 +18,24 @@
         <div class='main-menu flex items-center '>
   
   
-          {{ $currentPage := . }}
-          {{ range .Site.Menus.main }}
+          {{ $current := . }}
+          {{ range .Site.Menus.main.ByWeight }}
 
-
+          {{ $menu_item_url := .URL | relLangURL }}
+          {{ $page_url:= $current.RelPermalink | relLangURL }}
+      
           
-          <li class="nav-item flex items-center relative {{ if $currentPage.HasMenuCurrent "main" . }}activeX{{ end }}">
+          <li class="nav-item flex items-center relative {{ if eq $menu_item_url $page_url }}activeX{{ end }}">
           <a class='nav-link' href="{{ .URL | relLangURL }}"><span>{{ .Name }}</span></a>
 
-          
+          <!-- how to have active childrens? -->
           
             {{ if .HasChildren }}        
           <span class="drop-icon hrefhmeno" for="{{ .Name }}">▾</span>
 
             <ul class="sub-menu text-right text-gray-900 transition-colors dark:text-gray-200 dark:bg-gray-800">
                 {{ range .Children }}
-                <li class="nav-item flex items-center {{ if $currentPage.HasMenuCurrent "main" . }}activeX{{ end }}">
+                <li class="nav-item flex items-center {{  if eq $menu_item_url $page_url  }}activeY{{ end }}">
                 <a href="{{ .URL | relLangURL }}" class="px-3 py-2"><span>{{ .Name }}</span></a></li>
                 
                  {{ end }}
@@ -55,8 +57,8 @@
 
   
             
-            .activeX {color:red!important}
-            
+            .activeX {color:#D73D85}
+            .activeY {color:#3dd75e}
             
             .sub-menu {
               opacity:0;
