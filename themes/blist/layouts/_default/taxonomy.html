@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+
+
+
+{{ partial "tag-list" . }}
+
+
+
+
+  
+  {{ end }}
+
+
+
+
+  {{ define "section-pre-footer" }}
+
+  {{- partial "pagination.html" . -}}
+
+  {{- partial "pagination2.html" . -}}
+
+  {{- partial "tagbuttons.html" . -}}
+  
+  {{ end }}

@@ -1,0 +1,262 @@
+{{ define "main" }}
+  {{ $lastmodstr := (partial "date.html" (dict "date" .Lastmod "language" $.Page.Language "format" "long")) }}
+   {{ $datestr := (partial "date.html" (dict "date" .Date "language" $.Page.Language "format" "long")) }} 
+
+
+
+
+   
+
+  {{ if .Params.thumbnail }}
+  <div class="relative max-w-5xl mx-auto px-4">
+    <img src="{{ .Params.thumbnail }}" class="rounded-lg shadow-sm w-full object-contain" />
+    <!--<div class="absolute top-4 right-8 rounded shadow bg-white text-gray-900 dark:bg-gray-900 dark:text-white px-2 py-0.5">
+      {{ $datestr }} -->
+    </div>
+  </div>
+  {{ end }}
+
+
+  <!--{{ if and (gt .WordCount 40 ) (.Params.toc) }}{{end}}-->
+  <aside class="ass" id="assdiv" data-foom="asss">
+    <div class="asideTab p-12 "> {{ .TableOfContents }} </div>
+
+    <div> 
+
+      <div class="p-6 containertagbut flex justify-center flex-wrap">
+        <span class="py-2 px-4 text-lg">Categories:</span>  <!-- md:w-1/2  1/2 width from medium screens  -->
+        {{range $name, $taxonomy := .Site.Taxonomies.categories}}
+        {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
+        <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a></span>
+              
+        {{end}}
+        {{end}}
+        
+        </div>
+
+    </div>
+</aside>
+
+
+
+<style>
+
+
+aside {
+    padding-left: .5rem;
+    margin-left: .5rem;
+    float: right;
+    box-shadow: inset 5px 0 5px -5px #29627e;
+    font-style: italic;
+    color: #29627e;
+    max-width:360px;
+    position:fixed;
+} 
+
+
+.scrollsid { margin-top:-4rem!important;  }
+
+
+  
+@media only screen and (max-width: 768px){
+      aside {position:unset!important;}
+      aside .containertagbut {display:none;}
+  }   
+  
+
+  
+
+
+</style>
+
+
+
+
+
+  <article class="prose lg:prose-lg mx-auto my-8 dark:prose-dark px-4">
+
+    <h1 class="text-2xl font-bold mb-2">{{ .Title }}</h1>
+    <h5 class="text-sm flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <rect x="4" y="5" width="16" height="16" rx="2" />
+        <line x1="16" y1="3" x2="16" y2="7" />
+        <line x1="8" y1="3" x2="8" y2="7" />
+        <line x1="4" y1="11" x2="20" y2="11" />
+        <rect x="8" y="15" width="2" height="2" />
+      </svg>
+      {{ $datestr | i18n "postedOnDate" }}
+      {{ if ne $datestr $lastmodstr }}
+        &nbsp{{ $lastmodstr | i18n "lastModified" }}</h5><h5 class="text-sm flex items-center">
+      {{ else }}
+        &nbsp;&bull;&nbsp;
+      {{ end }}
+      <svg xmlns="http://www.w3.org/2000/svg" class="mr-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+      </svg>
+      {{ i18n "readingTime"}}{{ .ReadingTime }}&nbsp;{{ i18n "readTime" }}
+      &nbsp;&bull;
+      <svg xmlns="http://www.w3.org/2000/svg" class="mx-1" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+        <line x1="3" y1="6" x2="3" y2="19" />
+        <line x1="12" y1="6" x2="12" y2="19" />
+        <line x1="21" y1="6" x2="21" y2="19" />
+      </svg>
+      {{ .WordCount }}&nbsp;{{ i18n "words" }}
+     
+
+    </h5>
+
+    {{ .Content }}
+  </article>
+
+
+
+
+<br>
+<h2 class="text-center my-2 text-xl font-semibold">More to read</h2>
+
+
+<div class=" solution-ass container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+ {{ range first 3 (where .Site.Pages "Params.keyt" "test" ) }} <!-- filter Pages (or RegularPages) where keyt parameter is equal to test,  -->
+ {{- partial "blog-card.html" . -}}
+{{ end }}
+</div>
+
+<div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+  {{ range where .Site.RegularPages "Params.keyt" "!=" "test" }}   <!-- gt ge le lt not in eq etc... -->
+  {{ .Name  }} 
+ {{ end }}
+ </div>
+
+ {{ $frontBundle := .Site.Params.frontBundle | default "blog" }} 
+  <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    {{ range first 3 (where .Site.RegularPages.ByDate.Reverse "Type" $frontBundle)  }}   <!-- latest -->
+      {{- partial "blog-card.html" . -}}
+    {{ end }}
+  </div>
+
+  <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    {{ range after 1 (where .Site.Pages "Type" "shop") }}   <!-- gt ge le lt not in eq etc... -->
+    {{ .Name  }} 
+   {{ end }}
+   </div>
+
+   <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+     {{ range where .Site.Pages "Type" "blog" }}   <!-- gt ge le lt not in eq etc... -->
+     {{ .Name  }} 
+    {{ end }}
+    </div>
+
+
+
+    <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    <ul id="tags-single">
+      <li>Tags:</li>
+      {{ range .Params.tags }}
+        <li><a href="{{ $.Site.BaseURL | relLangURL }}/tags/{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+  </div>
+
+  <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    <ul id="tags-sin">
+      <li>Tags:</li>
+      {{ range (.GetTerms "tags") }} <!-- same as before  -->
+        <li><a href="{{ $.Site.BaseURL | relLangURL }}/tags/{{ .Name | urlize }}">#{{ .Name }}</a> </li>
+      {{ end }}
+    </ul>
+  </div>  
+
+   
+<div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+  <div id="tags-insingle"><p>Tags:</p>
+    {{- with .Params.tags -}}
+        {{- if ge (len .) 1 -}}
+            {{- range . -}}
+                <a href="{{ $.Site.BaseURL | relLangURL }}/tags/{{ . | urlize }}/">#{{ . }}</a>
+            {{ end -}}
+        {{- end -}}
+    {{- end -}}
+  </div>
+  </div> 
+
+
+  <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    <ul id="categories">
+      <li>Categories:</li>
+      {{ range .Params.categories }}
+        <li><a href="{{ $.Site.BaseURL | relLangURL }}/categories/{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+  </div>
+
+
+
+
+
+  <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+<p>this is a related-post suggestion setion, the following are other posts with the same tag of the current post --></p>
+  {{ $currPermalink := .Page.RelPermalink }}
+  {{ range (.GetTerms "tags") }}
+    {{ $currTag := .LinkTitle }}
+    {{ $taggedPages := (index .Site.Taxonomies.tags (lower $currTag)).Pages }}
+    <ul>
+      {{if gt (len $taggedPages) 2}} {{ range $taggedPages }}  <!-- it output suggestions only if ther'are at least 2 other posts w that tag -->
+        {{ if not (eq .RelPermalink $currPermalink) }}
+          <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
+        {{ end }}
+      {{ end }}
+    </ul>
+  {{ end }}
+</div>
+
+
+
+<div class="p-6 containertagbut flex justify-center flex-wrap">  <!-- md:w-1/2  1/2 width from medium screens  -->
+
+{{range $name, $taxonomy := .Site.Taxonomies.tags}} {{ $cnt := .Count }}
+{{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+      
+<span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a>
+<sup>{{$cnt}}</sup></span>
+      
+{{end}}
+{{end}}
+
+</div>
+
+
+<div class="p-6 containertagbut flex justify-center flex-wrap">
+  <span class="py-2 px-4 text-lg">Tags:</span>  <!-- md:w-1/2  1/2 width from medium screens  -->
+  {{range $name, $taxonomy := .Site.Taxonomies.tags}}
+  {{ with $.Site.GetPage (printf "/tags/%s" $name) }}
+  <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a></span>
+        
+  {{end}}
+  {{end}}
+  
+  </div>
+
+
+  <div class="p-6 containertagbut flex justify-center flex-wrap">
+    <span class="py-2 px-4 text-lg">Categories:</span>  <!-- md:w-1/2  1/2 width from medium screens  -->
+    {{range $name, $taxonomy := .Site.Taxonomies.categories}}
+    {{ with $.Site.GetPage (printf "/categories/%s" $name) }}
+    <span class="m-1 bg-transparent hover:bg-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-500 hover:border-transparent rounded-full" ><a href={{ .RelPermalink }} title="All pages with tag <i>{{$name}}</i>">{{$name}}</a></span>
+          
+    {{end}}
+    {{end}}
+    
+    </div>
+  
+
+  
+
+{{ end }}
+

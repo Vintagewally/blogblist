@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<p style="text-align:center; margin-left: 50px">
+  About page to buil -  no recommanda
+</p>
+
+<form data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" method='POST'  name="contact">  <!-- enctype='multipart/form-data' -->
+  <div class='form-group'>
+    <div class='form-row'>
+      <div class='col'>
+        <input class='form-control' name='name' placeholder='Name' required='required' type='text'/>
+      </div>
+      <div class='col'>
+        <input autocomplete='email' class='form-control' name='email' placeholder='Email' required='required' type='email'/>
+      </div>
+    </div>
+  </div>
+             
+ <div aria-hidden='true' style='position: absolute; left: -5000px;'><input name="bot-field" type='text' value=''/></div>
+
+ <div class='form-group'>
+<input accept='image/png, image/jpeg' name='attachment' type='file'/> 
+</div>
+             
+  <div class='form-group'>
+      <textarea class='form-control' name='message' placeholder='Your Message' required='required' rows='1'></textarea>
+  </div>
+             <!-- recaptcha -->  <div data-netlify-recaptcha="true"></div>      
+  <button class='btn btn-md btn-dark btn-block restyle' type='submit'>Submit</button>
+       
+</form>
+
+
+{{ end }}
+
+
+
+

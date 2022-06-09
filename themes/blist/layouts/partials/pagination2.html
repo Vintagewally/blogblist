@@ -1,0 +1,41 @@
+<div class="grid place-items-center mb-8">
+
+  
+
+
+
+  {{ if gt .Paginator.TotalPages 1 }}
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6 text-center">
+      <nav class="navigation pagination d-inline-block">
+        <div class="nav-links">
+          {{ if .Paginator.HasPrev }}
+            <a class="prev page-numbers" href="{{ .Paginator.Prev.URL | relURL }}">
+              Prev
+            </a>
+          {{ end }}
+
+          <span aria-current="page" class="page-numbers current">
+            {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}
+          </span>
+
+          {{ if .Paginator.HasNext }}
+            <a class="next page-numbers" href="{{ .Paginator.Next.URL | relURL }}">
+              Next
+            </a>
+          {{ end }}
+        </div>
+      </nav>
+    </div>
+  </div>
+{{ end }}
+
+
+
+
+
+
+
+
+  
+</div>

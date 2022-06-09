@@ -1,0 +1,346 @@
+<!-- <footer class="container p-6 mx-auto flex justify-between items-center">
+  <span class="text-sm font-light">
+    {{ if (isset .Site.Params "copyright") }}
+    {{ .Site.Params.copyright }}
+    {{ else }}
+    {{ dateFormat "2006" now }} © {{ .Site.Title }}
+    {{ end }}
+  </span>
+  <span onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-1 cursor-pointer">
+    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M18 15l-6 -6l-6 6h12" />
+    </svg>
+  </span>
+</footer> gap-10 md:gap-5
+-->
+
+
+
+  <!-- FOOTER -->
+
+
+  <div class='w-full bg-gray-100 dark:bg-gray-900' id='paddinglifooter'>
+            
+    <div class='px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+      
+    <div class='grid row-gap-10 mb-8 lg:grid-cols-6' >
+      
+    <div class='grid grid-cols-2 gap-y-10 gap-x-3 sm:gap-6 lg:col-span-4 md:grid-cols-4 '>
+      
+
+      <div class=" dark:text-gray-200 dark:hover:border-gray-300 cntrmx-480"><p class='font-medium tracking-wide'>
+        <strong>Brand</strong>
+    </p> <ul class='mt-2 space-y-2'>
+			{{ range first 3 .Site.Menus.main }}
+			<li class='nav-item flex items-center'>
+			  <a href="{{ .URL | relLangURL }}">{{ .Name }}</a> </li>
+        {{ end }}
+      </ul></div>
+
+
+      <div class=" dark:text-gray-200 dark:hover:border-gray-300 cntrmx-480"><p class='font-medium tracking-wide'>
+        <strong>Shop</strong>
+    </p> <ul class='mt-2 space-y-2'>
+
+      {{ range .Site.Menus.main }}
+      {{ range .Children }}        
+       <li class='nav-item flex items-center'>
+			  <a href="{{ .URL | relLangURL }}">{{ .Name }}</a> </li>            
+      {{ end }}          
+        {{ end }}
+  
+      </ul></div>
+     <div class=" dark:text-gray-200 dark:hover:border-gray-300 cntrmx-480"><p class='font-medium tracking-wide'>
+      <strong>Policies</strong>
+    </p> <ul class='mt-2 space-y-2'>
+      <li><a href='/'>Privacy</a></li>
+      <li><a href='/'>Shipping</a></li>
+      <li><a href='/'>Refunds</a></li>   
+      </ul></div></div>
+      
+      <div class='md:max-w-md lg:col-span-2'>
+      <span class='text-base tracking-wide' id='subforupdates' style='font-size:18px; font-weight:500'>Stay in the know,</span>
+
+
+      
+  <!--mc_embed_signup-->    
+
+<div id='mc_embed_signup'>
+
+<form action='/' class='validate' id='mc-embedded-subscribe-form' method='post' name='mc-embedded-subscribe-form' target='_blank'>
+<div class='flex flex-col md:flex-row' id='mc_embed_signup_scroll'>
+
+<input class='flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-white border border-gray-900 border-opacity-10 rounded shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline' id='mce-EMAIL' name='EMAIL' placeholder='Email' required='required' type='email' value=''/>
+
+<!-- diversivo -->
+<div aria-hidden='true' style='position: absolute; left: -5000px;'><input name='b_89286fbf59014210eefa3f38b_da34de8d9c' tabindex='-1' type='text' value=''/></div><div class='clear'>
+
+<input class='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md focus:shadow-outline' id='mc-embedded-subscribe' name='subscribe' type='submit' value='Subscribe'/></div>
+
+</div>
+</form>
+</div>
+
+        
+        
+
+      <style>  
+              
+      
+#paddinglifooter {z-index:5; position:relative;}               
+#paddinglifooter a:hover{text-decoration:underline}
+#paddinglifooter li{padding:0!important}
+
+#mc-embedded-subscribe:focus{outline:0}#mc-embedded-subscribe:hover{background:#0288d1;cursor:pointer}#mc-embedded-subscribe{background:#023147}#mc_embed_signup form{text-align:center;padding:20px 0 20px 0}.mc-field-group{display:inline-block}#mc_embed_signup label{display:block;font-size:16px;padding-bottom:10px;font-weight:700}#mc_embed_signup .clear{display:inline-block}#mc_embed_signup div#mce-responses{float:left;top:-1.4em;padding:0 .5em 0 .5em;overflow:hidden;width:90%;margin:0 5%;clear:both}#mc_embed_signup div.response{margin:1em 0;padding:1em .5em .5em 0;font-weight:700;float:left;top:-1.5em;z-index:1;width:80%}#mc_embed_signup #mce-error-response{display:none}#mc_embed_signup #mce-success-response{color:#529214;display:none}#mc_embed_signup label.error{display:block;float:none;width:auto;margin-left:1.05em;text-align:left;padding:.5em 0}           
+        
+@media (max-width:768px){
+        #mc_embed_signup input.email{width:100%;margin-bottom:5px;}
+        #mc_embed_signup .clear{display:block;width:100%}
+        #mc-embedded-subscribe {width:100%}
+        #followmeon {justify-content: center;}
+        
+        .cntrtxt-768 {text-align:center; }
+        
+
+        }    
+        
+@media (max-width:1023px){
+        span#subforupdates{display:none!important}
+        #mc_embed_signup{margin-top:1.7rem}
+        } 
+  
+@media (max-width:480px){
+        #mc_embed_signup form {padding:0;}
+        #mc_embed_signup {padding: 1.5rem 2rem 0.5rem 2rem;}
+        #mc_embed_signup h2 {display:block; font-weight:bold; text-align:center;margin-bottom:0.6rem; font-size:19px;} 
+
+        #followmeon {margin:1rem auto 0 auto ;}
+       .cntrmx-480 {margin:0 auto;}
+
+}
+
+  
+
+      </style>
+        
+        
+       <div class='flex items-center space-x-4 sm:mt-0' id='followmeon'> <p style='font-size:16px'> ... and follow me on</p>	
+        {{ with .Site.Params.homepage.social.twitter }}
+          <a
+            href="{{.}}"
+            target="_blank"
+            rel="noopener"
+            aria-label="Twitter"
+            class="p-2 inline-block rounded-full border border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:text-gray-300 dark:hover:border-gray-300 dark:hover:text-gray-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path
+                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"
+              />
+            </svg>
+          </a>
+        {{ end }}
+
+       <!--<a href='/' rel='noopener' style='font-size:22px' target='_blank'><i class='fab fa-youtube'></i></a>
+       <a href='/' rel='noopener' style='font-size:22px' target='_blank'><i class='fab fa-pinterest'></i></a>
+       <a class="icon-social-youtube" href='/' rel='noopener' target='_blank'></a>
+       <a class="icon-social-instagram" href='/' rel='noopener' target='_blank'></a>
+       <a class="icon-social-twitter" href='/' rel='noopener' target='_blank'></a>
+       <a class="icon-social-github" href='/' rel='noopener' target='_blank'></a>
+       <a class="icon-paypal" href='/' rel='noopener' target='_blank'></a>
+       <a class="icon-credit-card" href='/' rel='noopener' target='_blank'></a>  -->
+
+
+
+      </div>
+      
+
+      </div></div>
+      
+      <div class='flex flex-col justify-between pt-5 pb-10 border-t border-gray-900 border-opacity-10 sm:flex-row cntrtxt-768'>
+<p class='text-sm'>
+ <!-- &#169; Copyright 2021 Jarvis Bruder -->
+ {{ if (isset .Site.Params "copyright") }}
+    {{ .Site.Params.copyright }}
+    {{ else }}
+    {{ dateFormat "2006" now }} © {{ .Site.Title }}
+    {{ end }}
+</p>
+      
+      
+
+      
+      </div>
+      
+      </div></div> 
+
+
+
+
+
+
+
+
+
+{{ if .Site.Params.enableSearch }}
+{{- partial "search-ui.html" . -}}
+{{ end }}
+
+{{ template "_internal/google_analytics.html" . }}
+
+{{ if ge (len .Site.Languages) 3 }}
+<script>
+  const languageMenuButton = document.querySelector('.language-switcher');
+  const languageDropdown = document.querySelector('.language-dropdown');
+  languageMenuButton.addEventListener('click', (evt) => {
+    evt.preventDefault()
+    if (languageDropdown.classList.contains('hidden')) {
+      languageDropdown.classList.remove('hidden')
+      languageDropdown.classList.add('flex')
+    } else {
+      languageDropdown.classList.add('hidden');
+      languageDropdown.classList.remove('flex');
+    }
+  })
+</script>
+{{ end }}
+
+{{ if .Site.Params.darkModeToggle }}
+<script>
+  // On page load or when changing themes
+  const darkmode = document.querySelector('.toggle-dark-mode');
+  function toggleDarkMode() {
+    if (document.documentElement.classList.contains('dark')) {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('darkmode', 'light')
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('darkmode', 'dark')
+    }
+  }
+  if (darkmode) {
+    darkmode.addEventListener('click', toggleDarkMode);
+  }
+
+  const darkStorage = localStorage.getItem('darkmode');
+  const isBrowserDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (!darkStorage && isBrowserDark) {
+    document.documentElement.classList.add('dark');
+  }
+
+  if (darkStorage && darkStorage === 'dark') {
+    toggleDarkMode();
+  }
+</script>
+
+
+{{ end }}
+
+<!--<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button')
+  const mobileMenu = document.querySelector('.mobile-menu')
+  function toggleMenu() {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
+  if(mobileMenu && mobileMenuButton){
+    mobileMenuButton.addEventListener('click', toggleMenu)
+  }
+</script>-->
+
+
+
+<script>
+
+window.addEventListener('DOMContentLoaded', event => {
+
+const mainmenu = document.querySelector(".main-menu");
+const menuToggle = document.querySelector(".menu-toggle");
+
+    menuToggle.addEventListener('click', event => {
+    event.preventDefault();
+    menuToggle.classList.toggle("open");
+    mainmenu.classList.toggle('showin');
+   // _toggleMenuIcon();
+   // menuToggle.classList.toggle('showin');
+    
+})
+
+
+  //const description = document.querySelector(".description");
+   // description.classList.toggle("wildcard");
+  const submenumobile = document.querySelector(".sub-menu");
+  const shopmenulink = document.querySelector("body > header > div > div > li:nth-child(4)")
+  
+  shopmenulink.addEventListener('click', event => {
+    event.preventDefault();
+    submenumobile.classList.toggle('showin');
+   // _toggleMenuIcon();
+   // shopmenulink.classList.toggle('showin');
+  });
+
+
+
+})
+
+
+  </script> 
+
+<!--<script>
+
+  window.addEventListener(scroll, function() {showFunction3()});             
+      
+  function showFunction3() {
+     
+      if (document.article.scrollTop > 20 ) {
+
+        document.getElementById("#TableOfContents").style.color = 'red';
+
+      } 
+  }
+
+  
+  </script>-->
+
+<script>
+
+            
+
+      
+  var win = window.innerWidth;               
+  const shopA = document.querySelector("body > header > div > div > li:nth-child(4) > a")
+  const spanA2 = document.querySelector("body > header > div > div > li:nth-child(4)")
+  
+  if( win < 768 ){
+    shopA.outerHTML = "<span>" + shopA.innerHTML + "</span>";  //convert a href into a span
+     spanA2.style.fontSize = '1.1rem';
+     // spanA2.cssText = 'color:red!important;background-color:yellow!important'; should override but doesnt work
+  }
+
+
+
+
+  
+  
+  </script>
+
+
+
+  
+  
+
+

@@ -1,0 +1,192 @@
+baseurl = "/"        
+metaDataFormat = "yaml"
+title = "BlistImproved"
+theme = "blist"
+
+#baseurl = "https://blist.vercel.app"   the original theme site demo
+
+#Paginate = 20
+#PaginatePath = "/"
+#summaryLength = 10
+
+#[taxonomies]
+#category = "categories"
+
+#[permalinks]
+#posts = ":section/:year/:month/:day/:title/"
+
+
+# sectionPagesMenu = "main"
+
+DefaultContentLanguage = "en"
+DefaultContentLanguageInSubdir = true
+[languages]
+  [languages.en]
+    contentDir = "content/en" #English
+    weight = 1
+    languageName = "English"
+    [languages.en.params]
+      introTitle = "Hey! I'm Katheryn Fox"
+      introSubtitle = "26 y/o junior developer who enjoys social card games, blogging and painting"
+      introPhoto = "/picture.jpg"
+      logo = "/blist-logo.png"
+    [[languages.en.menu.main]]
+        name = "Blog"
+        url = "blog"
+        weight = 1
+
+    [[languages.en.menu.main]]
+        name = "About"
+        url = "about"
+        weight = 2
+
+    [[languages.en.menu.main]]
+        name = "Contact"
+        url = "contact"
+        weight = 3        
+
+    [[languages.en.menu.main]]
+        name = "Shop"
+        url = "shop"                    # alternativa   /shop/indexshop.html
+        weight = 4
+        identifier = "menu.shop"
+        category = ""
+
+    [[languages.en.menu.main]]
+          name = "Option1"
+          url = "shop/option1"
+          weight = 1 
+          parent = "menu.shop"
+
+    [[languages.en.menu.main]]
+          name = "Option2"
+          url = "shop/option2"
+          weight = 2 
+          parent = "menu.shop"
+
+    [[languages.en.menu.main]]
+          name = "Option3"
+          url = "shop/option3"
+          weight = 3 
+          parent = "menu.shop"
+
+
+
+                     
+   # [[languages.en.menu.main]]
+    #    name = "Tags"
+     #   url = "tags"
+      #  weight = 5
+
+
+
+
+
+  [languages.de]
+    contentDir = "content/de" # Deutsch
+    weight = 2
+    languageName = "Deutsch"
+    title = "BlistImproved"
+    description = "Modernes Blog-Theme für Ihre Hugo-Site."
+    [languages.de.params]
+      introTitle = "Hallo, ich bin Katheryn Fox"
+      introSubtitle = "26-jährige Junior-Entwicklerin, die Spaß an sozialen Kartenspielen, Bloggen und Malen hat"
+      introPhoto = "/picture.jpg"
+      logo = "/blist-logo-de.png"       #Brand Logo
+    [[languages.de.menu.main]]
+        name = "Blog"
+        url = "blog"
+        weight = 1
+
+    [[languages.de.menu.main]]
+        name = "Über mich"
+        url = "about"
+        weight = 2
+
+    [[languages.de.menu.main]]
+        name = "Tags"
+        url = "tags"
+        weight = 3
+
+ #  To run a 3th language
+ #  [languages.dy]
+  #   contentDir = "content/dy" #Example language
+  #   weight = 3
+  #   languageName = "Test Language"
+
+
+
+
+[params]
+
+
+
+
+  # Enable the darkmode toggle in header
+  darkModeToggle = true
+  
+  # Enable search in header
+  enableSearch = true
+
+  # Custom copyright - optional
+  # copyright = "Copyright © 2021 - Katheryn Fox · All rights reserved"
+
+  favicon = "/favicon.svg"
+  # favicon = "/images/favicon2.png"
+
+
+  # Color for the intro details and social links block, not applicable for dark mode
+  # Supported values: Any color from TailwindCSS default colors
+  # Reference: https://tailwindcss.com/docs/customizing-colors
+  ascentColor = "bg-gray-100"
+
+  # The page bundle that is shown on the front page
+  frontBundle = "blog"
+
+[params.homepage.social]
+  # Global params xommon for both languages
+  title = "Follow me"
+  description = "I work on everything coding"
+  twitter = "https://twitter.com/"
+  linkedin = "https://linkedin.com/in/"
+  xing = "https://www.xing.com/profile/"
+  github = "https://github.com/"
+  medium = "https://medium.com/"
+  reddit = "https://reddit.com/"
+  dribbble = "https://dribbble.com/"
+
+
+
+[build]
+  writeStats = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# syntax highlight settings
+[markup]
+  [markup.highlight]
+    style = "dracula"
+  [markup.goldmark.renderer]
+    # Enable to include inline HTML
+    unsafe = true
+
+
+
+[params.clients]
+   enable = true
+    # All clients are defined in their own files. You can find example items
+    # at 'exampleSite/data/clients'.
+    # For more information take a look at the README.
+    title = "Our Clients"
+    subtitle = ""
+    
+
+
+googleAnalytics = "" #UA-xxxxxxx google Analytics
+
+# disableLanguages = ['fr', 'ja'] This can be useful when working on a new translation.
+
+# rssLimit = 3 #max num of items in the RSS feeds
+
+enableEmoji = true  # Enable https://www.webfx.com/tools/emoji-cheat-sheet/

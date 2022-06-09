@@ -1,0 +1,129 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="icon" href="{{ if (isset .Site.Params "favicon") }}{{ .Site.Params.favicon }}{{ else }}/favicon.ico{{ end }}">
+
+  <title>
+    {{ block "title" . }} {{- .Title }} - {{ .Site.Title -}} {{ end }}
+  </title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}" />
+  {{- if .Keywords }}
+  <meta name="keywords" content="{{ delimit .Keywords "," }}" />
+  {{ end -}}
+  {{- if .Params.Author }}
+  <meta name="author" content="{{ .Params.Author}}" />
+  {{ end -}}
+  
+  {{ hugo.Generator }}
+
+  <!--
+    What exactly does this do? With this basic pipe, Hugo will take the Special CSS file from css/styles.css, process it into postCSS, and make its file size as small as possible (resources.Minify). 
+  -->
+
+  {{- $styles := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") -}}
+  {{- if .Site.IsServer }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />
+  {{ else }}
+  {{- $styles := $styles| minify | fingerprint | resources.PostProcess -}}
+  <link
+    rel="stylesheet"
+    href="{{ $styles.Permalink }}"
+    integrity="{{ $styles.Data.Integrity }}"
+  />
+  {{ end -}}
+
+
+  
+
+  <!-- Katex support -->
+  {{ if .Params.math }}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css"
+      integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv"
+      crossorigin="anonymous"
+    >
+
+    <script defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js"
+      integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O"
+      crossorigin="anonymous"
+    ></script>
+
+    <script defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js"
+      integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script>
+  {{ end }}
+
+  {{ range .AlternativeOutputFormats -}}
+    {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+  {{ end -}}
+
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/schema.html" . }}
+
+
+
+
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+
+
+
+{{ if .IsHome }}
+
+<!--
+<link rel="stylesheet" href="/themes/blist/static/css/owl.carousel.css">
+<link rel="stylesheet" href="/themes/blist/static/css/owl.theme.default.css">
+<script defer src="/themes/blist/static/js/owl.carousel.min.js"></script>-->
+
+<!-- its a prob with the folder location of owl css and script, works only if sourced externally-->
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>  
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+
+
+
+<!--
+<link href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css' rel='stylesheet' type='text/css'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css' rel='stylesheet' type='text/css'/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>  
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css' rel='stylesheet'/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />-->
+
+
+
+<!--
+  Every page except Home Page
+  
+  {{ if ne .IsHome true }}
+	this is the home page
+{{ end }} 
+
+
+
+
+-->
+
+  {{ end -}}
+
+
+
+
+
+</head>
+
+
+
+
+
+

@@ -1,0 +1,251 @@
+{{ define "main" }}
+  {{- partial "intro.html" . -}}
+  {{ $frontBundle := .Site.Params.frontBundle | default "blog" }}
+  <div class="container p-6 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
+    {{ range first 6 (where .Site.RegularPages.ByDate.Reverse "Type" $frontBundle)  }}
+      {{- partial "blog-card.html" . -}}
+    {{ end }}
+  </div>
+
+  {{ if gt (len (where .Site.RegularPages.ByDate.Reverse "Type" $frontBundle)) 6 }}
+  <div class="text-center mb-8">
+    <a class="px-8 py-3 rounded transition-colors {{ .Site.Params.ascentColor | default "bg-pink-50" }}
+      text-gray-500 hover:text-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:text-white"
+      href="{{ (index (.Site.Menus.main) 0).URL | absLangURL }}" lang="{{ .Lang }}">
+      {{ i18n "morePosts" }}
+    </a>
+  </div>
+  {{ end }}
+
+
+
+
+
+ 
+<div class='carouselwrap'>  
+
+   <div class='owl-navi'>
+   <div><div class='previ icon-arrow-left'>&lt;</div></div>
+
+        
+      
+
+  <div class='owl-carousel myslider'>
+
+
+
+
+{{ range .Site.Data.marmellate }}
+        <div class='car-item'>
+        <img class='itemo' alt='{{ .name }}'  src='{{ .image }}' title='{{ .name }}' width='260' />  
+
+        {{ if .url }}
+        <a href='{{ .url | relLangURL }}'><button class='itemo-bt'><p>{{.price }}</p><p><b>{{ .name }}</b></p></button></a>
+        {{ else }}                
+        <a href='{{ .BaseUrl | relLangURL }}/shop'><button class='itemo-bt'><p>{{.price }}</p><p><b>{{ .name }}</b></p></button></a>
+        {{ end }}
+        
+        </div>
+{{ end }}
+
+
+  </div><!--owl-->
+    
+  <div><div class='nexti icon-arrow-right'>&gt;</div></div>
+
+  </div>
+
+<!---->
+  
+  {{ with .Site.GetPage "Type" "shop" }}  <!--get the permalinks from the shop index, try instead  range where .Site.Pages "Type" "shop"   -->
+    <div class='buttondiv'>
+    <span class='extrabutton'><a href='{{ .RelPermalink }}' style='text-shadow: 0px 1px black;'>{{ .Name }}</a></span>
+    </div>
+    {{ end }}
+  
+</div>
+  
+  
+  
+  
+  <style>
+  
+       
+    /************* CAROuseL ***************/
+      
+  
+  
+  
+  
+  .carouselwrap{
+  list-style:none;
+  text-align:center;
+  max-width: 1536px; 
+  margin:auto;
+  }
+
+  .car-item {background:transparent}
+  
+  /*.car-item {width:80%; margin: 0 auto} */  
+
+  .owl-navi {
+    display: flex;
+    justify-content:space-between;
+    width:100%;position:relative;
+    }
+
+  .previ, .nexti  {font-size:2rem; top:50%; transform:translateY(-50%); position:absolute; z-index:66; cursor: pointer;}
+  .previ  {padding-left:11px;}
+  .nexti  {margin-left:-32px}
+
+ /* 
+  .owl-nav {
+    position:absolute;
+    top:50%;transform: translateY(-50%);
+    display: flex;
+    justify-content:space-between;
+    width:100%;
+    }
+  
+  .owl-prev span, .owl-next span{
+  font-size:4rem;
+  z-index:66;
+  }
+  
+  
+ 
+  
+  .owl-prev  {margin-left:15px;}
+  .owl-next  {margin-right:15px;}
+
+     
+   .owl-prev:hover{
+      text-shadow: 0px -1px #313131;
+      transition:all .3s ease;
+      -webkit-transition: all 0.3s ease;
+      } 
+       
+      .owl-next :hover{
+      text-shadow: 0px -1px #313131;
+      transition:all .3s ease;
+      -webkit-transition: all 0.3s ease;
+      } */
+         
+  
+  .buttondiv{  
+  width:100%;
+  height:auto;
+  margin: 0 auto;
+  display:flex;
+  justify-content:center; 
+  }
+  
+  .extrabutton {margin-bottom:120px;}
+  
+  .extrabutton a {
+  opacity:1;
+  font-family: Open Sans, sans-serif;
+  font-weight: bold;
+  font-size:19px;
+  font-style:italic;  
+  border:none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  z-index: 66;
+  padding:10px 13px;
+  border-radius:8px;
+  cursor: pointer;
+  text-align:center;
+  color:white;
+  text-decoration: none;
+  border-bottom: 1px solid white;
+  background-image: linear-gradient(
+      to top,
+      #B2411A,
+      #C66400
+      
+    );
+  }
+  
+  .extrabutton a:hover {border:3px solid white}      
+    
+  
+    
+  @media only screen and (min-width: 480px){
+       .car-item:hover .itemo{
+       -webkit-transform:scale(1.03);
+      -moz-transform:scale(1.03);
+      transform:scale(1.03);
+      } 
+  }   
+  
+
+  
+  
+  /*-----------------------------------------------------------------*/     
+  
+  
+  
+  </style>
+  
+  
+  
+  
+  
+  
+  <script>
+  
+  
+  
+  $('.owl-carousel').owlCarousel({
+    //nav:true,  
+    //navText: [$('.nexti'),$('.previ')],
+    dots:true,
+    loop:true,
+    autoplay: false,
+    mouseDrag: true,
+    slideBy: 1,
+    //autoplayTimeout: 3000,
+    //autoplayHoverPause: true,
+    margin:0,  // set the margins btw the items of the carousel
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1
+            // can set propreties also at this level remember the ","
+        },
+        480:{
+            items:2
+        },
+        768:{
+            items:3
+        },
+        1200:{
+            items:4
+            
+        }
+    }
+})
+  
+  
+var owl = $('.owl-carousel');
+owl.owlCarousel();
+// Go to the next item
+$('.nexti').click(function() {
+    owl.trigger('next.owl.carousel');
+})
+// Go to the previous item
+$('.previ').click(function() {
+    // With optional speed parameter
+    // Parameters has to be in square bracket '[]'
+    owl.trigger('prev.owl.carousel');
+})  
+  
+  </script>
+
+
+
+
+
+
+
+{{ end }}

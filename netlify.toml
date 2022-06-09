@@ -1,0 +1,7 @@
+[build]
+  command = "npm i && HUGO_ENVIRONMENT=production hugo --gc"
+  publish = "public"
+
+
+[context.production.environment]
+HUGO_VERSION = "0.100.1"

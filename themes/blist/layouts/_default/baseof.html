@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
+  {{- partial "head.html" . -}}
+  <body class="dark:bg-gray-800 dark:text-white relative flex flex-col min-h-screen">
+    {{- partial "header.html" . -}}
+
+
+    <main class="flex-1">
+    {{- block "main" . }}{{- end }}  <!-- means it does not include it -->
+    </main>
+
+    <section class="section-pre-footer">
+      {{- block "section-pre-footer" . }}
+      {{- end }} 
+    </section>
+
+
+    {{- partial "footer.html" . -}}
+  </body>
+</html>
