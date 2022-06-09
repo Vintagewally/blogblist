@@ -183,7 +183,7 @@ DefaultContentLanguageInSubdir = true
     
 
 
-googleAnalytics = "" #UA-xxxxxxx google Analytics
+#googleAnalytics = "" #UA-xxxxxxx google Analytics
 
 
 disableLanguages = 'de'
