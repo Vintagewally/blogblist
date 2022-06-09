@@ -1,4 +1,4 @@
-baseurl = "/"        
+baseurl = "https://fancy-gelato.netlify.app/"        
 metaDataFormat = "yaml"
 title = "BlistImproved"
 theme = "blist"
