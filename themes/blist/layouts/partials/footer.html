@@ -298,7 +298,7 @@ const hrefMeno = document.querySelector("body > header > div > div > li:nth-chil
 
 
 const activePage = window.location.pathname;
-const navLinks = document.querySelectorAll('.nav-item a').forEach(link => {
+const navLinks = document.querySelectorAll('.main-menu a').forEach(link => {
   if(link.href.includes(`${activePage}`)){
     link.classList.add('activeX');
     console.log(link);
