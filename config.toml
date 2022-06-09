@@ -185,9 +185,6 @@ DefaultContentLanguageInSubdir = true
 
 #googleAnalytics = "" #UA-xxxxxxx google Analytics
 
-
-
-
 # disableLanguages = ['fr', 'ja'] This can be useful when working on a new translation.
 
 # rssLimit = 3 #max num of items in the RSS feeds
