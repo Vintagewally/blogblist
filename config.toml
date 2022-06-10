@@ -5,6 +5,8 @@ theme = "blist"
 
 #baseurl = "https://blist.vercel.app"   the original theme site demo
 
+
+
 #Paginate = 20
 #PaginatePath = "/"
 #summaryLength = 10
@@ -18,7 +20,7 @@ category = "categories"
 #posts = ":section/:year/:month/:day/:title/"
 
 
-# sectionPagesMenu = "main"
+ sectionPagesMenu = "main"
 
 DefaultContentLanguage = "en"
 DefaultContentLanguageInSubdir = false    #has to ramain false
