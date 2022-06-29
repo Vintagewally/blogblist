@@ -191,7 +191,7 @@
       {{ if .Site.Params.enableSearch }}
       <li class="flex items-center navicon relative ">
         <span class="open-search inline-block cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5"
+          <svg xmlns="http://www.w3.org/2000/svg"   width="22" height="22" viewBox="0 0 24 24" stroke-width="2"
             stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <circle cx="10" cy="10" r="7" />
@@ -200,12 +200,14 @@
         </span>
       </li>
       {{ end }}
+
+
   
       {{ if .Site.Params.darkModeToggle }}
       <li class="flex items-center navicon relative">
         <span class="toggle-dark-mode inline-block cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="spinni" xmlns="http://www.w3.org/2000/svg"  width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <circle cx="12" cy="12" r="3" />
             <line x1="12" y1="5" x2="12" y2="5.01" />
@@ -368,9 +370,22 @@ a,
   
   .navicon:hover {transform:scale(1.18)}
   
-  }     
+   
+  .spinni  { width:2rem!important; }
+
+  .spinni:hover  { animation: spin 0.5s ;}
+
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
   
-  
+
+
+}
+
+
+
+
   
   @media (max-width: 768px) {
     .main-menu {flex-direction:column;}
